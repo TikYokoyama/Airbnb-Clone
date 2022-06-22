@@ -1,24 +1,31 @@
 import React from "react"
-import star from "../images/Star 1.png"
-// import data from "../data"
 
+export default function Card(props) {
+    // console.log(props.openSpots);
 
-export default function Card(prop) {
-    console.log(prop);
+    let badgeText
+    if (props.item.openSpots === 0) {
+        badgeText = "SOLD OUT"
+    } else if (props.item.location === "Online") {
+        badgeText = "ONLINE"
+    }
+
     return (
 
             <div className="card--item">
-                <img className="card--photo" src={prop.img} alt="natacao" />
+                {badgeText && <div className="card--badge">{badgeText}</div>}
+                <img className="card--photo" src={`../images/${props.item.coverImg}`} alt="natacao" />
                 <div className="card--ratings">
-                    <img className="card--star" src={star} alt="star" />
-                    <p className="card--text">{prop.text1}</p>
-                    <p id="grey" className="card--text">{prop.text2}</p>
+                    <img className="card--star" src="../images/Star 1.png" alt="star" />
+                    <span>{props.item.stats.rating}</span>
+                    <span className="card--text" id="gray">({props.item.stats.reviewCount}) • </span>
+                    <span className="card--text" id="gray">{props.item.location}</span>
                 </div>
                 <div className="card--infos">
-                    <p className="card--text">{prop.info}</p>
+                    <p className="card--text">{props.item.title}</p>
                 </div>
                 <div className="card--price">
-                    <p className="card--text"><strong>{prop.price}</strong> / person</p>
+                    <p className="card--text"><strong>From {props.item.price}</strong> / person</p>
                 </div>
             </div>
     )

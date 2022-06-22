@@ -1,10 +1,9 @@
 import React from "react"
-import grid from "../images/image-grid.jpeg"
 
 export default function Hero() {
     return (
         <section className="hero">
-            <img className="hero--photo" src={grid} alt="airbnb-logo" />
+            <img className="hero--photo" src="../images/image-grid.jpeg" alt="airbnb-logo" />
             <h1 className="hero--header">Online Experiences</h1>
             <p className="hero--text">Join unique interactive activities led by one-of-a-kind hosts—all without leaving home.</p>
         </section>
